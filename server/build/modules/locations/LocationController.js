@@ -35,13 +35,24 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+var errorHandler_1 = __importDefault(require("../../helpers/errorHandler"));
+var responseHandler_1 = __importDefault(require("../../helpers/responseHandler"));
 var LocationController = /** @class */ (function () {
     function LocationController() {
     }
     LocationController.getCurrentLocation = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
+                try {
+                    return [2 /*return*/, (0, responseHandler_1.default)(res, "Your data is loaded", 200, "Your data is loaded")];
+                }
+                catch (error) {
+                    return [2 /*return*/, errorHandler_1.default.handleError(error === null || error === void 0 ? void 0 : error.message, 500, res)];
+                }
                 return [2 /*return*/];
             });
         });
@@ -49,3 +60,4 @@ var LocationController = /** @class */ (function () {
     return LocationController;
 }());
 ;
+exports.default = LocationController;
